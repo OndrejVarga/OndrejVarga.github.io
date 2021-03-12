@@ -1,5 +1,6 @@
 @include laptops {
   .section:nth-child(2) {
+
     .section__text,
     .section__img {
       transition: opacity 250ms linear, transform 400ms linear;
@@ -10,26 +11,67 @@
       transform: translateX(0);
       opacity: 1;
     }
+
     .section__img.appear {
       opacity: 1;
       transform: translateX(-50%);
     }
+
     .section__text {
       transform: translateX(50%);
       opacity: 0;
-      order: 2;
+      order: 1;
 
       @include desktops {
         padding-left: 15rem;
         padding-right: 0;
       }
     }
+
     .section__img {
       transform: translateX(-100%);
       opacity: 0;
     }
   }
+
+  .section:last-child {
+
+    .section__text,
+    .section__img {
+      transition: opacity 250ms linear, transform 400ms linear;
+      opacity: 0;
+    }
+
+    .section__text.appear {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .section__img.appear {
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+
+    .section__text {
+      transform: translateX(50%);
+      opacity: 0;
+      order: 1;
+
+      @include desktops {
+        padding-left: 15rem;
+        padding-right: 0;
+      }
+    }
+
+    .section__img {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
 }
+
+
 .section {
   overflow-x: hidden;
   background-color: #fff;
@@ -53,7 +95,9 @@
   @include skarede {
     padding: 5rem 10rem;
   }
+
   @include laptops {
+
     &__text,
     &__img {
       transition: opacity 250ms linear, transform 400ms linear;
@@ -72,15 +116,43 @@
   }
 
   &__text {
+    
+    
+    .last {
+      margin-bottom: 3rem;
+    }
+
+    a {
+      padding: 12px 2rem;
+      background-color: #303841;
+      color: #fff;
+      border-radius: 1.2rem;
+      transition: all 300ms ease-in;
+      border-color: #303841;
+
+      @include tablet {
+        font-size: 1.42rem;
+      }
+
+      &:hover {
+          background-color: #fff;
+          color: #303841;
+      }
+    }
+  
+
     padding: 0 2rem;
+
     @include laptops {
       transform: translateX(-50%);
     }
+
     @include desktops {
       text-align: start;
       align-self: center;
       padding-right: 15rem;
     }
+
     h1 {
       margin: 2rem 0;
       font-size: 2rem;
@@ -89,6 +161,7 @@
       @include tablet {
         font-size: 3.5rem;
       }
+
       @include desktops {
         // margin: 4rem 0;
       }
@@ -103,6 +176,7 @@
       }
     }
   }
+
   &__img {
     .circle {
       @include tablet {
@@ -121,6 +195,7 @@
         height: 450px;
         top: 0px;
       }
+
       img {
         position: absolute;
         height: 250px;
@@ -131,11 +206,13 @@
           height: 350px;
           left: 3.9rem;
         }
+
         @include laptops {
           height: 350px;
           left: 5.5rem;
           bottom: 0rem;
         }
+
         @include laptops {
           height: 550px;
           bottom: -3rem;
