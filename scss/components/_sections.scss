@@ -1,0 +1,146 @@
+@include laptops {
+  .section:nth-child(2) {
+    .section__text,
+    .section__img {
+      transition: opacity 250ms linear, transform 400ms linear;
+      opacity: 0;
+    }
+
+    .section__text.appear {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .section__img.appear {
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+    .section__text {
+      transform: translateX(50%);
+      opacity: 0;
+      order: 2;
+
+      @include desktops {
+        padding-left: 15rem;
+        padding-right: 0;
+      }
+    }
+    .section__img {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+}
+.section {
+  overflow-x: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include laptops {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  @include desktops {
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 5rem 20rem;
+  }
+
+  @include skarede {
+    padding: 5rem 10rem;
+  }
+  @include laptops {
+    &__text,
+    &__img {
+      transition: opacity 250ms linear, transform 400ms linear;
+      opacity: 0;
+    }
+
+    &__text.appear {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    &__img.appear {
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__text {
+    padding: 0 2rem;
+    @include laptops {
+      transform: translateX(-50%);
+    }
+    @include desktops {
+      text-align: start;
+      align-self: center;
+      padding-right: 15rem;
+    }
+    h1 {
+      margin: 2rem 0;
+      font-size: 2rem;
+      color: #303841;
+
+      @include tablet {
+        font-size: 3.5rem;
+      }
+      @include desktops {
+        // margin: 4rem 0;
+      }
+    }
+
+    h3 {
+      font-weight: lighter;
+      color: #303841;
+
+      @include tablet {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  &__img {
+    .circle {
+      @include tablet {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include laptops {
+        width: 350px;
+        height: 350px;
+        transform: translateX(50%);
+      }
+
+      @include desktops {
+        width: 450px;
+        height: 450px;
+        top: 0px;
+      }
+      img {
+        position: absolute;
+        height: 250px;
+        bottom: -2rem;
+        left: 2.5rem;
+
+        @include tablet {
+          height: 350px;
+          left: 3.9rem;
+        }
+        @include laptops {
+          height: 350px;
+          left: 5.5rem;
+          bottom: 0rem;
+        }
+        @include laptops {
+          height: 550px;
+          bottom: -3rem;
+        }
+      }
+    }
+  }
+}

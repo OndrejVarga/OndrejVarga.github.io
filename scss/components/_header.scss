@@ -1,0 +1,175 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  @include skarede {
+    .pekne {
+      padding: 1rem 10rem !important;
+    }
+    
+    
+  }
+
+  @include desktops {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    
+
+    .pekne {
+      padding: 1rem 20rem;
+    }
+  }
+
+  &__nav {
+    transition: 0.3s;
+    background: #303841;
+    color: #fff;
+    padding: 2rem 1.5rem;
+    flex-wrap: wrap;
+
+    @include tablet {
+      flex-wrap: nowrap;
+      padding: 2rem 5rem;
+    }
+
+    @include laptops {
+      padding: 2rem 10rem;
+    }
+
+    @include desktops {
+      padding: 2rem 20rem;
+    }
+
+    @include skarede {
+      padding: 2rem 10rem;
+    }
+
+    &__logo {
+      @include tablet {
+        font-size: 1.5rem;
+      }
+    }
+
+    &.open {
+      .header__nav__hamburger {
+        > span:first-child {
+          transform: rotate(45deg);
+        }
+
+        > span:nth-child(2) {
+          opacity: 0;
+        }
+
+        > span:last-child {
+          transform: rotate(-45deg);
+        }
+      }
+
+      .header__nav__links {
+        height: 250px;
+
+        @include tablet {
+          height: 50px;
+        }
+
+        opacity: 1;
+      }
+    }
+
+    &__hamburger {
+      @include tablet {
+        display: none;
+      }
+
+      > span {
+        display: block;
+        height: 2px;
+        width: 26px;
+        background-color: #fff;
+        transition: all 300ms ease-in-out;
+        transform-origin: 6px 1px;
+
+        &:not(:last-child) {
+          margin-bottom: 3px;
+        }
+      }
+    }
+
+    &__links {
+      @include tablet {
+        opacity: 1;
+        flex-direction: row;
+        height: auto;
+        flex: 1;
+        justify-content: flex-end;
+        height: 50px;
+      }
+
+      opacity: 0;
+      width: 100%;
+      height: 0px;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 300ms ease;
+
+      & li:first-child {
+        @include tablet {
+          margin-top: 0;
+        }
+
+        margin-top: 40px;
+      }
+
+      .btn {
+        transition: all 0.3s ease-in-out;
+      }
+
+      .btn:hover {
+        background: #fff;
+
+        a {
+          color: #303841;
+        }
+      }
+    }
+
+    .header__nav__link {
+      padding: 1rem;
+
+      @include desktops {
+        &:not(:last-child) a {
+          position: relative;
+        }
+        &:not(:last-child) a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 2px;
+            background:#fff;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 250ms ease-in;
+        }
+
+        
+
+        &:not(:last-child) a:hover:after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}
