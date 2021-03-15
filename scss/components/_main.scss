@@ -24,6 +24,8 @@
     padding: 5rem 10rem;
   }
   &__text {
+
+
     @include desktops {
       text-align: start;
     }
